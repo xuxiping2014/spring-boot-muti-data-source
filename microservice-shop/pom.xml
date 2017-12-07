@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xinyunlian.retailterminal</groupId>
+    <artifactId>retailterminal-microservice</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.xinyunlian.retailterminal</groupId>
+  <artifactId>microservice-shop</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>microservice-shop</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <microservice-dependencies.version>1.0-SNAPSHOT</microservice-dependencies.version>
+    <microservice-common-oauth2.version>1.0-SNAPSHOT</microservice-common-oauth2.version>
+    <microservice-shop-api.version>0.0.1-SNAPSHOT</microservice-shop-api.version>
+    <pagehelper-version>1.2.3</pagehelper-version>
+    <lombok-version>1.16.18</lombok-version>
+    <com.xinyunlian.retailterminal.common-utils>1.0-SNAPSHOT</com.xinyunlian.retailterminal.common-utils>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.xinyunlian.retailterminal</groupId>
+        <artifactId>microservice-dependencies</artifactId>
+        <version>${microservice-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok-version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--当前项目依赖-->
+    <dependency>
+      <groupId>com.xinyunlian.retailterminal</groupId>
+      <artifactId>microservice-shop-api</artifactId>
+      <version>${microservice-shop-api.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.xinyunlian.retailterminal</groupId>
+      <artifactId>common-utils</artifactId>
+      <version>${com.xinyunlian.retailterminal.common-utils}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!--cloud 相关-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-eureka</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-ribbon</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-feign</artifactId>
+    </dependency>
+
+    <!--数据库相关-->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+      <version>${pagehelper-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-commons</artifactId>
+          <version>1.12.6.RELEASE</version>
+      </dependency>
+    <dependency>
+      <groupId>com.xinyunlian.retailterminal</groupId>
+      <artifactId>microservice-user-api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <!-- 会员中心相关 -->
+    <dependency>
+      <groupId>com.xinyunlian.soa</groupId>
+      <artifactId>member-service-api</artifactId>
+      <version>20171115-RELEASE</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

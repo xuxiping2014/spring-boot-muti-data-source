@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinyunlian.retailterminal.shop.database.mapper.ADMShopMapper" >
+  <resultMap id="BaseResultMap" type="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShop" >
+    <id column="SHOP_ID" property="shopId" jdbcType="BIGINT" />
+    <result column="AREA_ID" property="areaId" jdbcType="VARCHAR" />
+    <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" />
+    <result column="SHOP_KEEPER" property="shopKeeper" jdbcType="VARCHAR" />
+    <result column="SOCIAL_CARD_ID" property="socialCardId" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="LONGITUDE" property="longitude" jdbcType="REAL" />
+    <result column="LATITUDE" property="latitude" jdbcType="REAL" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="POS_NO" property="posNo" jdbcType="VARCHAR" />
+    <result column="STORAGE_NO" property="storageNo" jdbcType="VARCHAR" />
+    <result column="TOBACCO_LICENSE" property="tobaccoLicense" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_TIME" property="lastUpdTime" jdbcType="TIMESTAMP" />
+    <result column="COMMITOR" property="commitor" jdbcType="INTEGER" />
+    <result column="APPROVOR" property="approvor" jdbcType="INTEGER" />
+    <result column="LEVEL" property="level" jdbcType="INTEGER" />
+    <result column="USER_CENTER_ID" property="userCenterId" jdbcType="VARCHAR" />
+    <result column="USER_CENTER_SHOP_ID" property="userCenterShopId" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="DEVICE_IDENTIFY" property="deviceIdentify" jdbcType="VARCHAR" />
+    <result column="IS_ONLINE" property="isOnline" jdbcType="INTEGER" />
+    <result column="LAST_HEARTBEAT_TIME" property="lastHeartbeatTime" jdbcType="TIMESTAMP" />
+    <result column="GROWTH" property="growth" jdbcType="BIGINT" />
+    <result column="POINTS" property="points" jdbcType="BIGINT" />
+    <result column="POS_APP_TYPE" property="posAppType" jdbcType="INTEGER" />
+    <result column="TOBACCO_CUST_ID" property="tobaccoCustId" jdbcType="BIGINT" />
+    <result column="WORK_PORT" property="workPort" jdbcType="VARCHAR" />
+    <result column="SALE_SCOPE" property="saleScope" jdbcType="VARCHAR" />
+    <result column="BUSINESS_AREA" property="businessArea" jdbcType="VARCHAR" />
+    <result column="SALE_TYPE" property="saleType" jdbcType="VARCHAR" />
+    <result column="BASE_TYPE" property="baseType" jdbcType="VARCHAR" />
+    <result column="BUSINESS_LICENSE" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CONTRACT_PATH" property="businessContractPath" jdbcType="VARCHAR" />
+    <result column="ACTIVE" property="active" jdbcType="INTEGER" />
+    <result column="ACCOUNT_ID" property="accountId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SHOP_ID, AREA_ID, SHOP_NAME, SHOP_KEEPER, SOCIAL_CARD_ID, TELEPHONE, MOBILE, QQ, 
+    EMAIL, PROVINCE, CITY, COUNTY, POST_CODE, ADDRESS, LONGITUDE, LATITUDE, STATUS, POS_NO, 
+    STORAGE_NO, TOBACCO_LICENSE, CREATE_TIME, LAST_UPD_TIME, COMMITOR, APPROVOR, LEVEL, 
+    USER_CENTER_ID, USER_CENTER_SHOP_ID, ICON, DEVICE_IDENTIFY, IS_ONLINE, LAST_HEARTBEAT_TIME, 
+    GROWTH, POINTS, POS_APP_TYPE, TOBACCO_CUST_ID, WORK_PORT, SALE_SCOPE, BUSINESS_AREA, 
+    SALE_TYPE, BASE_TYPE, BUSINESS_LICENSE, BUSINESS_CONTRACT_PATH, ACTIVE, ACCOUNT_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShopExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ADM_SHOP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ADM_SHOP
+    where SHOP_ID = #{shopId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ADM_SHOP
+    where SHOP_ID = #{shopId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShopExample" >
+    delete from ADM_SHOP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShop" >
+    insert into ADM_SHOP (SHOP_ID, AREA_ID, SHOP_NAME, 
+      SHOP_KEEPER, SOCIAL_CARD_ID, TELEPHONE, 
+      MOBILE, QQ, EMAIL, 
+      PROVINCE, CITY, COUNTY, 
+      POST_CODE, ADDRESS, LONGITUDE, 
+      LATITUDE, STATUS, POS_NO, 
+      STORAGE_NO, TOBACCO_LICENSE, CREATE_TIME, 
+      LAST_UPD_TIME, COMMITOR, APPROVOR, 
+      LEVEL, USER_CENTER_ID, USER_CENTER_SHOP_ID, 
+      ICON, DEVICE_IDENTIFY, IS_ONLINE, 
+      LAST_HEARTBEAT_TIME, GROWTH, POINTS, 
+      POS_APP_TYPE, TOBACCO_CUST_ID, WORK_PORT, 
+      SALE_SCOPE, BUSINESS_AREA, SALE_TYPE, 
+      BASE_TYPE, BUSINESS_LICENSE, BUSINESS_CONTRACT_PATH, 
+      ACTIVE, ACCOUNT_ID)
+    values (#{shopId,jdbcType=BIGINT}, #{areaId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, 
+      #{shopKeeper,jdbcType=VARCHAR}, #{socialCardId,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=REAL}, 
+      #{latitude,jdbcType=REAL}, #{status,jdbcType=INTEGER}, #{posNo,jdbcType=VARCHAR}, 
+      #{storageNo,jdbcType=VARCHAR}, #{tobaccoLicense,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdTime,jdbcType=TIMESTAMP}, #{commitor,jdbcType=INTEGER}, #{approvor,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{userCenterId,jdbcType=VARCHAR}, #{userCenterShopId,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{deviceIdentify,jdbcType=VARCHAR}, #{isOnline,jdbcType=INTEGER}, 
+      #{lastHeartbeatTime,jdbcType=TIMESTAMP}, #{growth,jdbcType=BIGINT}, #{points,jdbcType=BIGINT}, 
+      #{posAppType,jdbcType=INTEGER}, #{tobaccoCustId,jdbcType=BIGINT}, #{workPort,jdbcType=VARCHAR}, 
+      #{saleScope,jdbcType=VARCHAR}, #{businessArea,jdbcType=VARCHAR}, #{saleType,jdbcType=VARCHAR}, 
+      #{baseType,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR}, #{businessContractPath,jdbcType=VARCHAR}, 
+      #{active,jdbcType=INTEGER}, #{accountId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShop" >
+    insert into ADM_SHOP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="areaId != null" >
+        AREA_ID,
+      </if>
+      <if test="shopName != null" >
+        SHOP_NAME,
+      </if>
+      <if test="shopKeeper != null" >
+        SHOP_KEEPER,
+      </if>
+      <if test="socialCardId != null" >
+        SOCIAL_CARD_ID,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE,
+      </if>
+      <if test="latitude != null" >
+        LATITUDE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="posNo != null" >
+        POS_NO,
+      </if>
+      <if test="storageNo != null" >
+        STORAGE_NO,
+      </if>
+      <if test="tobaccoLicense != null" >
+        TOBACCO_LICENSE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="lastUpdTime != null" >
+        LAST_UPD_TIME,
+      </if>
+      <if test="commitor != null" >
+        COMMITOR,
+      </if>
+      <if test="approvor != null" >
+        APPROVOR,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="userCenterId != null" >
+        USER_CENTER_ID,
+      </if>
+      <if test="userCenterShopId != null" >
+        USER_CENTER_SHOP_ID,
+      </if>
+      <if test="icon != null" >
+        ICON,
+      </if>
+      <if test="deviceIdentify != null" >
+        DEVICE_IDENTIFY,
+      </if>
+      <if test="isOnline != null" >
+        IS_ONLINE,
+      </if>
+      <if test="lastHeartbeatTime != null" >
+        LAST_HEARTBEAT_TIME,
+      </if>
+      <if test="growth != null" >
+        GROWTH,
+      </if>
+      <if test="points != null" >
+        POINTS,
+      </if>
+      <if test="posAppType != null" >
+        POS_APP_TYPE,
+      </if>
+      <if test="tobaccoCustId != null" >
+        TOBACCO_CUST_ID,
+      </if>
+      <if test="workPort != null" >
+        WORK_PORT,
+      </if>
+      <if test="saleScope != null" >
+        SALE_SCOPE,
+      </if>
+      <if test="businessArea != null" >
+        BUSINESS_AREA,
+      </if>
+      <if test="saleType != null" >
+        SALE_TYPE,
+      </if>
+      <if test="baseType != null" >
+        BASE_TYPE,
+      </if>
+      <if test="businessLicense != null" >
+        BUSINESS_LICENSE,
+      </if>
+      <if test="businessContractPath != null" >
+        BUSINESS_CONTRACT_PATH,
+      </if>
+      <if test="active != null" >
+        ACTIVE,
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopKeeper != null" >
+        #{shopKeeper,jdbcType=VARCHAR},
+      </if>
+      <if test="socialCardId != null" >
+        #{socialCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=REAL},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="posNo != null" >
+        #{posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageNo != null" >
+        #{storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tobaccoLicense != null" >
+        #{tobaccoLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTime != null" >
+        #{lastUpdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitor != null" >
+        #{commitor,jdbcType=INTEGER},
+      </if>
+      <if test="approvor != null" >
+        #{approvor,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userCenterId != null" >
+        #{userCenterId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCenterShopId != null" >
+        #{userCenterShopId,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceIdentify != null" >
+        #{deviceIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnline != null" >
+        #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="lastHeartbeatTime != null" >
+        #{lastHeartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="growth != null" >
+        #{growth,jdbcType=BIGINT},
+      </if>
+      <if test="points != null" >
+        #{points,jdbcType=BIGINT},
+      </if>
+      <if test="posAppType != null" >
+        #{posAppType,jdbcType=INTEGER},
+      </if>
+      <if test="tobaccoCustId != null" >
+        #{tobaccoCustId,jdbcType=BIGINT},
+      </if>
+      <if test="workPort != null" >
+        #{workPort,jdbcType=VARCHAR},
+      </if>
+      <if test="saleScope != null" >
+        #{saleScope,jdbcType=VARCHAR},
+      </if>
+      <if test="businessArea != null" >
+        #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null" >
+        #{saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="baseType != null" >
+        #{baseType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="businessContractPath != null" >
+        #{businessContractPath,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShopExample" resultType="java.lang.Integer" >
+    select count(*) from ADM_SHOP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ADM_SHOP
+    <set >
+      <if test="record.shopId != null" >
+        SHOP_ID = #{record.shopId,jdbcType=BIGINT},
+      </if>
+      <if test="record.areaId != null" >
+        AREA_ID = #{record.areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null" >
+        SHOP_NAME = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopKeeper != null" >
+        SHOP_KEEPER = #{record.shopKeeper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.socialCardId != null" >
+        SOCIAL_CARD_ID = #{record.socialCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        QQ = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        PROVINCE = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null" >
+        COUNTY = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postCode != null" >
+        POST_CODE = #{record.postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.longitude != null" >
+        LONGITUDE = #{record.longitude,jdbcType=REAL},
+      </if>
+      <if test="record.latitude != null" >
+        LATITUDE = #{record.latitude,jdbcType=REAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.posNo != null" >
+        POS_NO = #{record.posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storageNo != null" >
+        STORAGE_NO = #{record.storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tobaccoLicense != null" >
+        TOBACCO_LICENSE = #{record.tobaccoLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdTime != null" >
+        LAST_UPD_TIME = #{record.lastUpdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commitor != null" >
+        COMMITOR = #{record.commitor,jdbcType=INTEGER},
+      </if>
+      <if test="record.approvor != null" >
+        APPROVOR = #{record.approvor,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null" >
+        LEVEL = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.userCenterId != null" >
+        USER_CENTER_ID = #{record.userCenterId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userCenterShopId != null" >
+        USER_CENTER_SHOP_ID = #{record.userCenterShopId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        ICON = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceIdentify != null" >
+        DEVICE_IDENTIFY = #{record.deviceIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isOnline != null" >
+        IS_ONLINE = #{record.isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastHeartbeatTime != null" >
+        LAST_HEARTBEAT_TIME = #{record.lastHeartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.growth != null" >
+        GROWTH = #{record.growth,jdbcType=BIGINT},
+      </if>
+      <if test="record.points != null" >
+        POINTS = #{record.points,jdbcType=BIGINT},
+      </if>
+      <if test="record.posAppType != null" >
+        POS_APP_TYPE = #{record.posAppType,jdbcType=INTEGER},
+      </if>
+      <if test="record.tobaccoCustId != null" >
+        TOBACCO_CUST_ID = #{record.tobaccoCustId,jdbcType=BIGINT},
+      </if>
+      <if test="record.workPort != null" >
+        WORK_PORT = #{record.workPort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saleScope != null" >
+        SALE_SCOPE = #{record.saleScope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessArea != null" >
+        BUSINESS_AREA = #{record.businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saleType != null" >
+        SALE_TYPE = #{record.saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.baseType != null" >
+        BASE_TYPE = #{record.baseType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessLicense != null" >
+        BUSINESS_LICENSE = #{record.businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessContractPath != null" >
+        BUSINESS_CONTRACT_PATH = #{record.businessContractPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.active != null" >
+        ACTIVE = #{record.active,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountId != null" >
+        ACCOUNT_ID = #{record.accountId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ADM_SHOP
+    set SHOP_ID = #{record.shopId,jdbcType=BIGINT},
+      AREA_ID = #{record.areaId,jdbcType=VARCHAR},
+      SHOP_NAME = #{record.shopName,jdbcType=VARCHAR},
+      SHOP_KEEPER = #{record.shopKeeper,jdbcType=VARCHAR},
+      SOCIAL_CARD_ID = #{record.socialCardId,jdbcType=VARCHAR},
+      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      QQ = #{record.qq,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      PROVINCE = #{record.province,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      COUNTY = #{record.county,jdbcType=VARCHAR},
+      POST_CODE = #{record.postCode,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      LONGITUDE = #{record.longitude,jdbcType=REAL},
+      LATITUDE = #{record.latitude,jdbcType=REAL},
+      STATUS = #{record.status,jdbcType=INTEGER},
+      POS_NO = #{record.posNo,jdbcType=VARCHAR},
+      STORAGE_NO = #{record.storageNo,jdbcType=VARCHAR},
+      TOBACCO_LICENSE = #{record.tobaccoLicense,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      LAST_UPD_TIME = #{record.lastUpdTime,jdbcType=TIMESTAMP},
+      COMMITOR = #{record.commitor,jdbcType=INTEGER},
+      APPROVOR = #{record.approvor,jdbcType=INTEGER},
+      LEVEL = #{record.level,jdbcType=INTEGER},
+      USER_CENTER_ID = #{record.userCenterId,jdbcType=VARCHAR},
+      USER_CENTER_SHOP_ID = #{record.userCenterShopId,jdbcType=VARCHAR},
+      ICON = #{record.icon,jdbcType=VARCHAR},
+      DEVICE_IDENTIFY = #{record.deviceIdentify,jdbcType=VARCHAR},
+      IS_ONLINE = #{record.isOnline,jdbcType=INTEGER},
+      LAST_HEARTBEAT_TIME = #{record.lastHeartbeatTime,jdbcType=TIMESTAMP},
+      GROWTH = #{record.growth,jdbcType=BIGINT},
+      POINTS = #{record.points,jdbcType=BIGINT},
+      POS_APP_TYPE = #{record.posAppType,jdbcType=INTEGER},
+      TOBACCO_CUST_ID = #{record.tobaccoCustId,jdbcType=BIGINT},
+      WORK_PORT = #{record.workPort,jdbcType=VARCHAR},
+      SALE_SCOPE = #{record.saleScope,jdbcType=VARCHAR},
+      BUSINESS_AREA = #{record.businessArea,jdbcType=VARCHAR},
+      SALE_TYPE = #{record.saleType,jdbcType=VARCHAR},
+      BASE_TYPE = #{record.baseType,jdbcType=VARCHAR},
+      BUSINESS_LICENSE = #{record.businessLicense,jdbcType=VARCHAR},
+      BUSINESS_CONTRACT_PATH = #{record.businessContractPath,jdbcType=VARCHAR},
+      ACTIVE = #{record.active,jdbcType=INTEGER},
+      ACCOUNT_ID = #{record.accountId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShop" >
+    update ADM_SHOP
+    <set >
+      <if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null" >
+        SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopKeeper != null" >
+        SHOP_KEEPER = #{shopKeeper,jdbcType=VARCHAR},
+      </if>
+      <if test="socialCardId != null" >
+        SOCIAL_CARD_ID = #{socialCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        POST_CODE = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE = #{longitude,jdbcType=REAL},
+      </if>
+      <if test="latitude != null" >
+        LATITUDE = #{latitude,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="posNo != null" >
+        POS_NO = #{posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageNo != null" >
+        STORAGE_NO = #{storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tobaccoLicense != null" >
+        TOBACCO_LICENSE = #{tobaccoLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdTime != null" >
+        LAST_UPD_TIME = #{lastUpdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commitor != null" >
+        COMMITOR = #{commitor,jdbcType=INTEGER},
+      </if>
+      <if test="approvor != null" >
+        APPROVOR = #{approvor,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="userCenterId != null" >
+        USER_CENTER_ID = #{userCenterId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCenterShopId != null" >
+        USER_CENTER_SHOP_ID = #{userCenterShopId,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceIdentify != null" >
+        DEVICE_IDENTIFY = #{deviceIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnline != null" >
+        IS_ONLINE = #{isOnline,jdbcType=INTEGER},
+      </if>
+      <if test="lastHeartbeatTime != null" >
+        LAST_HEARTBEAT_TIME = #{lastHeartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="growth != null" >
+        GROWTH = #{growth,jdbcType=BIGINT},
+      </if>
+      <if test="points != null" >
+        POINTS = #{points,jdbcType=BIGINT},
+      </if>
+      <if test="posAppType != null" >
+        POS_APP_TYPE = #{posAppType,jdbcType=INTEGER},
+      </if>
+      <if test="tobaccoCustId != null" >
+        TOBACCO_CUST_ID = #{tobaccoCustId,jdbcType=BIGINT},
+      </if>
+      <if test="workPort != null" >
+        WORK_PORT = #{workPort,jdbcType=VARCHAR},
+      </if>
+      <if test="saleScope != null" >
+        SALE_SCOPE = #{saleScope,jdbcType=VARCHAR},
+      </if>
+      <if test="businessArea != null" >
+        BUSINESS_AREA = #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="saleType != null" >
+        SALE_TYPE = #{saleType,jdbcType=VARCHAR},
+      </if>
+      <if test="baseType != null" >
+        BASE_TYPE = #{baseType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        BUSINESS_LICENSE = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="businessContractPath != null" >
+        BUSINESS_CONTRACT_PATH = #{businessContractPath,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        ACTIVE = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where SHOP_ID = #{shopId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinyunlian.retailterminal.shop.database.model.shop.ADMShop" >
+    update ADM_SHOP
+    set AREA_ID = #{areaId,jdbcType=VARCHAR},
+      SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      SHOP_KEEPER = #{shopKeeper,jdbcType=VARCHAR},
+      SOCIAL_CARD_ID = #{socialCardId,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTY = #{county,jdbcType=VARCHAR},
+      POST_CODE = #{postCode,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      LONGITUDE = #{longitude,jdbcType=REAL},
+      LATITUDE = #{latitude,jdbcType=REAL},
+      STATUS = #{status,jdbcType=INTEGER},
+      POS_NO = #{posNo,jdbcType=VARCHAR},
+      STORAGE_NO = #{storageNo,jdbcType=VARCHAR},
+      TOBACCO_LICENSE = #{tobaccoLicense,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LAST_UPD_TIME = #{lastUpdTime,jdbcType=TIMESTAMP},
+      COMMITOR = #{commitor,jdbcType=INTEGER},
+      APPROVOR = #{approvor,jdbcType=INTEGER},
+      LEVEL = #{level,jdbcType=INTEGER},
+      USER_CENTER_ID = #{userCenterId,jdbcType=VARCHAR},
+      USER_CENTER_SHOP_ID = #{userCenterShopId,jdbcType=VARCHAR},
+      ICON = #{icon,jdbcType=VARCHAR},
+      DEVICE_IDENTIFY = #{deviceIdentify,jdbcType=VARCHAR},
+      IS_ONLINE = #{isOnline,jdbcType=INTEGER},
+      LAST_HEARTBEAT_TIME = #{lastHeartbeatTime,jdbcType=TIMESTAMP},
+      GROWTH = #{growth,jdbcType=BIGINT},
+      POINTS = #{points,jdbcType=BIGINT},
+      POS_APP_TYPE = #{posAppType,jdbcType=INTEGER},
+      TOBACCO_CUST_ID = #{tobaccoCustId,jdbcType=BIGINT},
+      WORK_PORT = #{workPort,jdbcType=VARCHAR},
+      SALE_SCOPE = #{saleScope,jdbcType=VARCHAR},
+      BUSINESS_AREA = #{businessArea,jdbcType=VARCHAR},
+      SALE_TYPE = #{saleType,jdbcType=VARCHAR},
+      BASE_TYPE = #{baseType,jdbcType=VARCHAR},
+      BUSINESS_LICENSE = #{businessLicense,jdbcType=VARCHAR},
+      BUSINESS_CONTRACT_PATH = #{businessContractPath,jdbcType=VARCHAR},
+      ACTIVE = #{active,jdbcType=INTEGER},
+      ACCOUNT_ID = #{accountId,jdbcType=BIGINT}
+    where SHOP_ID = #{shopId,jdbcType=BIGINT}
+  </update>
+</mapper>

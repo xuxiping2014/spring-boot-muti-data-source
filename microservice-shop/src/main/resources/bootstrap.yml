@@ -1,0 +1,16 @@
+server:
+  port: 8903
+spring:
+  application:
+    name: shop
+  profiles:
+    active: dev
+  cloud:
+      config:
+        discovery:
+          enabled: false
+          service-id: config-server
+        enabled: false
+logging:
+  file: /data/logs/lszd/${spring.application.name}.log
+  level: info
